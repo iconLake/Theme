@@ -20,6 +20,7 @@ export default class Exhibition extends HTMLElement {
           color: #fff;
           font-family: sans-serif;
           line-height: 1.8;
+          padding: 0 80px;
           .cover {
             width: 100%;
             height: 100%;
