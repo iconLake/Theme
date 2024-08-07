@@ -103,6 +103,13 @@ export default class Exhibition extends HTMLElement {
         <div class="author">Created by ${info.data.author}</div>
       </div>
     `)
+    const projectDom = dom.querySelector('.project')
+    projectDom.addEventListener('click', () => {
+      window.scrollTo({
+        top: projectDom.offsetHeight - 100,
+        behavior: 'smooth'
+      })
+    })
     this.shadowRoot.appendChild(dom)
   }
 
