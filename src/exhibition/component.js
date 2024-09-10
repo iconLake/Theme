@@ -11,7 +11,7 @@ export default class Exhibition extends HTMLElement {
 
     this.shadowRoot.appendChild(
       scss(`
-        .project {
+        .class {
           height: 100vh;
           display: flex;
           align-items: center;
@@ -46,6 +46,12 @@ export default class Exhibition extends HTMLElement {
             bottom: 20px;
             right: 0;
             text-align: center;
+          }
+          .share {
+            display: inline-block;
+            line-height: 1;
+            vertical-align: middle;
+            cursor: pointer;
           }
         }
         .list {
@@ -85,32 +91,35 @@ export default class Exhibition extends HTMLElement {
     )
 
     Promise.all([
-      window.iconlakeAPI.project.getInfo(window.iconlakeAPI.project.id),
-      window.iconlakeAPI.project.getNfts(window.iconlakeAPI.project.id)
+      window.iconlakeAPI.class.getInfo(window.iconlakeAPI.class.id),
+      window.iconlakeAPI.class.getNfts(window.iconlakeAPI.class.id)
     ]).then(([info, data]) => {
-      this.renderProject(info)
+      this.renderClass(info)
       this.renderNfts(data, info)
       window.iconlakeAPI.loading.isShow = false
     })
   }
 
-  renderProject (info) {
+  renderClass (info) {
     const dom = html(`
-      <div class="project">
+      <div class="class">
         <div class="cover" style="background-image: url(${info.uri})"></div>
         <div class="title">${info.name}</div>
         <div class="desc">${info.description}</div>
-        <div class="author">Created by ${info.data.author}</div>
+        <div class="author">Created by ${info.data.author} <span class="share"></span></div>
       </div>
     `)
-    const projectDom = dom.querySelector('.project')
-    projectDom.addEventListener('click', () => {
+    const classDom = dom.querySelector('.class')
+    classDom.addEventListener('click', () => {
       window.scrollTo({
-        top: projectDom.offsetHeight - 100,
+        top: classDom.offsetHeight - 100,
         behavior: 'smooth'
       })
     })
     this.shadowRoot.appendChild(dom)
+    window.iconlakeAPI.share.load(this.shadowRoot.querySelector('.share'), {
+      classId: info.id
+    })
   }
 
   renderNfts (data, info) {

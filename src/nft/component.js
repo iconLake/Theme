@@ -34,7 +34,7 @@ export default class Nft extends HTMLElement {
           display: flex;
           flex-direction: column;
           justify-content: flex-end;
-          padding: 50px 0;
+          padding: 50px 0 30px;
           line-height: 1.6;
           background-color: #f1f1f1;
           color: #000;
@@ -53,6 +53,18 @@ export default class Nft extends HTMLElement {
             a {
               color: #000;
               text-decoration: none;
+            }
+            &.share {
+              display: flex;
+              justify-content: center;
+              margin-top: 30px;
+              img {
+                height: 32px;
+              }
+              .st-btn {
+                cursor: pointer;
+                line-height: 1;
+              }
             }
           }
           .verify-result {
@@ -125,10 +137,15 @@ export default class Nft extends HTMLElement {
               </span>
             </div>
           </div>
+          <div class="item share"></div>
         </div>
       </div>
     `)
     this.shadowRoot.appendChild(dom)
+
+    window.iconlakeAPI.share.load(this.shadowRoot.querySelector('.share'), {
+      nftId: nft.id
+    })
 
     window.iconlakeAPI.verifyHash(nft.uri, nft.uriHash).then((res) => {
       const resDom = this.shadowRoot.querySelector('.verify-result')

@@ -8,7 +8,7 @@ window.iconlakeAPI = {
     dom: document.querySelector('.loading'),
     isShow: false
   },
-  project: {
+  class: {
     id: '6541026cca1c4915ba6ef2d0',
     getNfts: async (id) => {
       await new Promise((resolve) => {
@@ -76,6 +76,70 @@ window.iconlakeAPI = {
       setTimeout(resolve, 1000)
     })
     return 1
+  },
+  share: {
+    config: {
+      alignment: 'center',
+      background_color: '#B581A3',
+      color: 'social',
+      enabled: true,
+      font_size: 12,
+      has_spacing: true,
+      is_ssb: false,
+      labels: 'none',
+      language: 'en',
+      min_count: 0,
+      networks: ['sharethis'],
+      num_networks: 5,
+      num_ssb_networks: 3,
+      padding: 10,
+      radius: 10,
+      show_total: false,
+      size: 32,
+      size_label: 'small',
+      spacing: 8,
+      text_color: '#fff',
+      use_native_counts: true
+    },
+    /**
+     * Load share dom
+     * @param {HTMLElement} container
+     * @param {{nftId?: string, classId?: string}} options
+     */
+    async load (container, options) {
+      await new Promise((resolve) => {
+        if (window.__sharethis__) {
+          return resolve()
+        }
+        const timer = setInterval(() => {
+          if (window.__sharethis__) {
+            clearInterval(timer)
+            return resolve()
+          }
+        }, 50)
+      })
+      const shareInfo = {}
+      if (options) {
+        if (options.nftId) {
+          const nft = await window.iconlakeAPI.nft.getInfo(options.nftId)
+          shareInfo.url = window.location.href
+          shareInfo.image = nft.uri
+          shareInfo.title = nft.data.name
+          shareInfo.description = nft.data.description
+        } else if (options.classId) {
+          const classInfo = await window.iconlakeAPI.class.getInfo(options.classId)
+          shareInfo.url = window.location.href
+          shareInfo.image = classInfo.uri
+          shareInfo.title = classInfo.name
+          shareInfo.description = classInfo.description
+        }
+      }
+      window.__sharethis__.load('inline-share-buttons', {
+        container,
+        ...this.config,
+        ...shareInfo
+      })
+    }
   }
 }
 
