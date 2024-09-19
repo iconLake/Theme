@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NFT</title>
-    <script type="module" src="src/nft/index.js"></script>
     <link rel="stylesheet" href="src/api/style.scss">
     <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=66d47a6c5ed17f00198b318a&product=inline-share-buttons' async='async'></script>
   </head>
@@ -13,6 +12,8 @@
       <img class="logo-blue" src="/imgs/logo.svg" alt="iconLake">
       <img class="logo-white" src="/imgs/logo-white.svg" alt="iconLake">
     </div>
-    <iconlake-nft></iconlake-nft>
+    <div id="iconlake-root"></div>
+    <script src="src/api/iconlake.js"></script>
+    <script type="module" src="src/nft/index.js"></script>
   </body>
 </html>

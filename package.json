@@ -1,30 +1,34 @@
 {
   "name": "theme",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "iconLake Theme",
   "main": "src/index.html",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build -c vite.config.build.exhibition.js && vite build -c vite.config.build.nft.js",
     "preview": "vite preview"
   },
   "keywords": [
     "iconlake",
     "theme"
   ],
+  "type": "module",
   "author": "HuanXiang",
   "license": "MIT",
   "devDependencies": {
+    "@vitejs/plugin-vue": "^5.1.4",
     "eslint": "^8.53.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
     "eslint-plugin-promise": "^6.0.0",
-    "html-minifier": "^4.0.0",
-    "node-sass": "^9.0.0",
-    "rollup-plugin-modify": "^3.0.0",
-    "sass": "^1.69.5",
-    "vite": "^4.5.0"
+    "typescript": "^5.6.2",
+    "vite": "^5.0.0",
+    "vite-plugin-css-injected-by-js": "^3.5.1",
+    "vue-tsc": "^2.1.6"
   },
-  "packageManager": "pnpm@9.6.0"
+  "packageManager": "pnpm@9.10.0",
+  "dependencies": {
+    "vue": "^3.5.6"
+  }
 }
