@@ -71,6 +71,34 @@ window.iconlakeAPI = {
       }
     }
   },
+  creator: {
+    address: 'iconlake1njpxea460gxk5l448mxs75g7qe796wsnmmxxfc',
+    getInfo: async (address) => {
+      await new Promise((resolve) => {
+        setTimeout(resolve, 1000)
+      })
+      return {
+        avatar: '/imgs/cover-project.jpeg',
+        avatarHash: '6a253ab9f7f6ddd715531dfd51225f96db9bdd990e72fac56a89233f3dc66543',
+        name: 'iconLake',
+        description: 'A creator of iconLake. \nThere is nothing more about me. Ha ha ha ha ha ha ha ha ha ha ~ \nYou can find me on Earth.',
+        medias: [
+          {
+            name: 'X',
+            content: 'https://x.com/iconLake',
+          },
+          {
+            name: 'WeChat',
+            content: 'iconLake',
+          },
+        ],
+        sex: 'Man',
+        birthday: '7-1',
+        location: 'China',
+        address: 'iconlake1njpxea460gxk5l448mxs75g7qe796wsnmmxxfc',
+      }
+    }
+  },
   verifyHash: async (uri, uriHash) => {
     await new Promise((resolve) => {
       setTimeout(resolve, 1000)

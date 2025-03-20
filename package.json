@@ -5,7 +5,7 @@
   "main": "src/index.html",
   "scripts": {
     "dev": "vite",
-    "build": "vite build -c vite.config.build.exhibition.js && vite build -c vite.config.build.nft.js",
+    "build": "vite build -c vite.config.build.exhibition.js && vite build -c vite.config.build.nft.js && vite build -c vite.config.build.creator.js",
     "preview": "vite preview"
   },
   "keywords": [
