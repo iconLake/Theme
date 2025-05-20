@@ -5,6 +5,10 @@
       window.location.href = '/exhibition.html'
       return
     } else if (pathParts.length === 4) {
+      if (pathParts[2] === 'creator') {
+        window.location.href = '/creator.html'
+        return
+      }
       window.location.href = '/nft.html'
       return
     }

@@ -9,5 +9,12 @@ export default defineConfig({
       input: 'exhibition.html'
     },
     emptyOutDir: true
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern'
+      }
+    }
   }
 })

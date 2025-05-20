@@ -9,5 +9,12 @@ export default defineConfig({
       input: 'creator.html'
     },
     emptyOutDir: false
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern'
+      }
+    }
   }
 })

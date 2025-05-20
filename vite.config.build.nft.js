@@ -9,5 +9,12 @@ export default defineConfig({
       input: 'nft.html'
     },
     emptyOutDir: false
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern'
+      }
+    }
   }
 })
