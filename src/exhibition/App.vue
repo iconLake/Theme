@@ -37,7 +37,7 @@ onMounted(() => {
     <div class="cover" :style="`background-image: url(${info.uri})`"></div>
     <div class="title">{{ info.name }}</div>
     <div class="desc">{{ info.description }}</div>
-    <div class="author">Created by {{ info.data?.author }} <span class="share"></span></div>
+    <div class="author">Created by <a :href="`/exhibition/creator/${info.data?.author}`">{{ info.data?.author }}</a> <span class="share"></span></div>
   </div>
   <div class="list">
     <a v-for="nft in nfts" class="item" :href="`/exhibition/${info.id}/${nft.id}`">
@@ -87,6 +87,12 @@ onMounted(() => {
     bottom: 20px;
     right: 0;
     text-align: center;
+
+    a {
+      color: #fff;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
   }
 
   .share {
